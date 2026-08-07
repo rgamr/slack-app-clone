@@ -1,0 +1,10 @@
+{"table":"workspaces","document":{"name":"Acme Inc"}}
+{"table":"channels","document":{"name":"general","workspace":"Acme Inc"}}
+{"table":"channels","document":{"name":"random","workspace":"Acme Inc"}}
+{"table":"users","document":{"name":"Raghad","email":"raghad@example.com","image":"https://i.pravatar.cc/150?img=1"}}
+{"table":"users","document":{"name":"Ahmed","email":"ahmed@example.com","image":"https://i.pravatar.cc/150?img=2"}}
+{"table":"users","document":{"name":"Sara","email":"sara@example.com","image":"https://i.pravatar.cc/150?img=3"}}
+{"table":"messages","document":{"body":"Welcome to #general!","channel":"general","user":"Raghad"}}
+{"table":"messages","document":{"body":"Good morning everyone ☀️","channel":"general","user":"Ahmed"}}
+{"table":"messages","document":{"body":"Who's working on the dashboard?","channel":"general","user":"Sara"}}
+{"table":"messages","document":{"body":"Let's deploy today 🚀","channel":"random","user":"Ahmed"}}
