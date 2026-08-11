@@ -2,9 +2,9 @@
 
 import { AlertTriangle, Loader, TriangleAlert } from "lucide-react";
 
-// import { MessageList } from "@/components/MessageList";
+import { MessageList } from "@/components/MessageList";
 import { useGetChannel } from "@/features/channels/api/useGetChannel";
-// import { useGetMessages } from "@/features/messages/api/useGetMessages";
+import { useGetMessages } from "@/features/messages/api/useGetMessages";
 import { useChannelId } from "@/hooks/useChannelId";
 import { ChatInput } from "./ChatInput";
 import { Header } from "./header";
@@ -13,15 +13,15 @@ const ChannelPage = () => {
   const channelId = useChannelId();
 
   const getChannel = useGetChannel({ id: channelId });
-  // const getMessages = useGetMessages({ channelId });
+  const getMessages = useGetMessages({ channelId });
 
-  // if (getChannel.isLoading || getMessages.status === "LoadingFirstPage") {
-  //   return (
-  //     <div className="h-full flex-1 flex items-center justify-center">
-  //       <Loader className="animate-spin size-5 text-muted-foreground" />
-  //     </div>
-  //   );
-  // }
+  if (getChannel.isLoading || getMessages.status === "LoadingFirstPage") {
+    return (
+      <div className="h-full flex-1 flex items-center justify-center">
+        <Loader className="animate-spin size-5 text-muted-foreground" />
+      </div>
+    );
+  }
 
   if (!getChannel.data) {
     return (
@@ -35,15 +35,14 @@ const ChannelPage = () => {
   return (
     <div className="flex flex-col h-full">
       <Header title={getChannel.data.name} />
-      {/* <MessageList
+      <MessageList
         channelName={getChannel.data.name}
         channelCreationTime={getChannel.data._creationTime}
         data={getMessages.results}
         loadMore={getMessages.loadMore}
         isLoadingMore={getMessages.status === "LoadingMore"}
         canLoadMore={getMessages.status === "CanLoadMore"}
-      /> */}
-      <div className="flex-1" />
+      />
       <ChatInput placeholder={`Message # ${getChannel.data.name}`} />
     </div>
   );

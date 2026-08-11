@@ -47,6 +47,9 @@ const SignUpCard = ({ setState }: SignUpCardProps) => {
 
     setPending(true);
     signIn("password", { name, email, password, flow: "signUp" })
+      .then(() => {
+        window.location.href = "/";
+      })
       .catch((err) => {
         const message = err instanceof Error ? err.message : "Something went wrong";
         

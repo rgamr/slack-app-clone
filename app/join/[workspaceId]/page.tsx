@@ -79,7 +79,9 @@ const JoinPage = () => {
         />
       </div>
       <div className="flex gap-x-4">
-        <Button size="lg" variant="outline" render={<Link href="/" />}>Home</Button>
+        <Button size="lg" variant="outline" nativeButton={false} render={<Link href="/" />}>
+          Home
+        </Button>
       </div>
     </div>
   );

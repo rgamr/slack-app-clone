@@ -32,6 +32,9 @@ const SignInCard = ({ setState }: SignInCardProps) => {
     e.preventDefault();
     setPending(true);
     signIn("password", { email, password, flow: "signIn" })
+      .then(() => {
+        window.location.href = "/";
+      })
       .catch(() => { setError("Invalid Email or Password")})
       .finally(() => {
         setPending(false);
@@ -103,6 +106,33 @@ const SignInCard = ({ setState }: SignInCardProps) => {
           >
             <FaGithub className="size-5 absolute top-3 left-2.5" />
             Continue with Github
+          </Button>
+        </div>
+        <Separator />
+        <div className="flex flex-col gap-y-2.5">
+          <Button
+            size="lg"
+            disabled={pending}
+            onClick={() => {
+              setPending(true);
+              signIn("password", {
+                email: "demo@slackclone.com",
+                password: "demo1234",
+                flow: "signIn",
+              })
+                .then(() => {
+                  window.location.href = "/";
+                })
+                .catch(() => {
+                  setError("Demo account not found. Please sign up first with demo@slackclone.com / demo1234");
+                })
+                .finally(() => {
+                  setPending(false);
+                });
+            }}
+            className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white border-0"
+          >
+             Try Demo Account
           </Button>
         </div>
         <p className="text-xs text-muted-foreground">

@@ -3,8 +3,8 @@ import Quill from "quill";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
 
-// import { useCreateMessage } from "@/features/messages/api/useCreateMessage";
-// import { useGenerateUploadUrl } from "@/features/upload/api/useGenerateUploadUrl";
+import { useCreateMessage } from "@/features/messages/api/useCreateMessage";
+import { useGenerateUploadUrl } from "@/features/upload/api/useGenerateUploadUrl";
 import { useChannelId } from "@/hooks/useChannelId";
 import { useWorkspaceId } from "@/hooks/useWorkSpaceId";
 import { Id } from "../../../../../convex/_generated/dataModel";
@@ -29,8 +29,8 @@ export const ChatInput = ({ placeholder }: ChatInputProps) => {
 
   const workspaceId = useWorkspaceId();
   const channelId = useChannelId();
-  // const createMessage = useCreateMessage();
-  // const generateUploadUrl = useGenerateUploadUrl();
+  const createMessage = useCreateMessage();
+  const generateUploadUrl = useGenerateUploadUrl();
 
   const handleSubmit = async ({
     body,
@@ -50,25 +50,25 @@ export const ChatInput = ({ placeholder }: ChatInputProps) => {
         image: undefined,
       };
 
-      // if (image) {
-      //   // const url = await generateUploadUrl.mutateAsync({});
+      if (image) {
+        const url = await generateUploadUrl.mutateAsync({});
 
-      //   const result = await fetch(url, {
-      //     method: "POST",
-      //     headers: { "Content-Type": image.type },
-      //     body: image,
-      //   });
+        const result = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": image.type },
+          body: image,
+        });
 
-      //   if (!result.ok) {
-      //     throw new Error("Failed to upload image");
-      //   }
+        if (!result.ok) {
+          throw new Error("Failed to upload image");
+        }
 
-      //   const { storageId } = await result.json();
+        const { storageId } = await result.json();
 
-      //   values.image = storageId;
-      // }
+        values.image = storageId;
+      }
 
-      // await createMessage.mutateAsync(values);
+      await createMessage.mutateAsync(values);
       
       setEditorKey((prev) => prev + 1);
     } catch (error) {

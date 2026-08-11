@@ -71,10 +71,7 @@ export const get = query({
       }
     }
 
-    return await ctx.db
-      .query("workspaces")
-      .withIndex("by_userId", (q) => q.eq("userId", userId))
-      .collect();
+    return workspaces;
   },
 });
 

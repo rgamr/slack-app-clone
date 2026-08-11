@@ -94,16 +94,19 @@ export const PreferenceModal = ({
           </DialogHeader>
           <div className="px-4 pb-4 flex flex-col gap-y-2">
             <Dialog open={editOpen} onOpenChange={setEditOpen}>
-              <DialogTrigger>
-                <div className="px-5 py-4 bg-white rounded-lg border cursor-pointer hover:bg-gray-50">
-                  <div className="flex items-center justify-between">
-                    <p className="text-sm font-semibold">Workspace name</p>
-                    <p className="text-sm text-[#1264A3] hover:underline font-semibold">
-                      Edit
-                    </p>
-                  </div>
-                  <p className="text-sm">{value}</p>
+              <DialogTrigger
+                nativeButton={false}
+                render={
+                  <div className="px-5 py-4 bg-white rounded-lg border cursor-pointer hover:bg-gray-50 w-full text-left" />
+                }
+              >
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-semibold">Workspace name</p>
+                  <p className="text-sm text-[#1264A3] hover:underline font-semibold">
+                    Edit
+                  </p>
                 </div>
+                <p className="text-sm mt-1 text-muted-foreground">{value}</p>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
@@ -121,11 +124,15 @@ export const PreferenceModal = ({
                     placeholder="Workspace name e.g. 'Work', 'Personal', 'Home'"
                   />
                   <DialogFooter>
-                    <DialogClose render={<Button
-                        variant="outline"
-                        disabled={updateWorkspace.isPending}
-                      />}>
-                        Cancel
+                    <DialogClose
+                      render={
+                        <Button
+                          variant="outline"
+                          disabled={updateWorkspace.isPending}
+                        />
+                      }
+                    >
+                      Cancel
                     </DialogClose>
                     <Button type="submit" disabled={updateWorkspace.isPending}>
                       Save
@@ -134,14 +141,14 @@ export const PreferenceModal = ({
                 </form>
               </DialogContent>
             </Dialog>
-            <Button
+            <button
               disabled={removeWorkspace.isPending}
               onClick={handleRemoveWorkspace}
-              className="flex items-center justify-start gap-x-2 py-4 bg-white rounded-lg border cursor-pointer hover:bg-gray-50 text-rose-600"
+              className="flex items-center gap-x-2 px-5 py-4 bg-white rounded-lg border cursor-pointer hover:bg-gray-50 text-rose-600 w-full"
             >
               <TrashIcon className="size-4" />
               <p className="text-sm font-semibold">Delete workspace</p>
-            </Button>
+            </button>
           </div>
         </DialogContent>
       </Dialog>

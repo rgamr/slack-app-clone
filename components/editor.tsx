@@ -16,7 +16,7 @@ import { PiTextAa } from "react-icons/pi";
 
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-// import { EmojiPopover } from "./EmojiPopover";
+import { EmojiPopover } from "./EmojiPopover";
 import { Hint } from "./Hint";
 import { Button } from "./ui/button";
 
@@ -182,8 +182,7 @@ const Editor = ({
         {!!image && (
           <div className="p-2">
             <div className="relative size-[62px] flex items-center justify-center group/image">
-              <Hint label="Remove image">
-                <button
+=                <button
                   onClick={() => {
                     setImage(null);
                     imageElementRef.current!.value = "";
@@ -192,7 +191,7 @@ const Editor = ({
                 >
                   <XIcon className="size-3.5" />
                 </button>
-              </Hint>
+
               <Image
                 src={URL.createObjectURL(image)}
                 alt="Uploaded"
@@ -216,11 +215,11 @@ const Editor = ({
             </Button>
           </Hint>
 
-          {/* <EmojiPopover onEmojiSelect={handleEmojiSelect}>
+          <EmojiPopover onEmojiSelect={handleEmojiSelect}>
             <Button disabled={disabled} size="sm" variant="ghost">
               <Smile className="size-4" />
             </Button>
-          </EmojiPopover> */}
+          </EmojiPopover>
           
           {variant === "create" && (
             <Hint label="Image">

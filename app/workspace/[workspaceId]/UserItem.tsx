@@ -41,7 +41,7 @@ export const UserItem = ({ id, image, label, variant }: UserItemProps) => {
       <Link href={`/workspace/${workspaceId}/member/${id}`} className="flex items-center w-full">
         <Avatar className="size-5 rounded-md mr-1">
           <AvatarImage className="rounded-md" src={image} />
-          <AvatarFallback className="rounded-md bg-sky-500 text-white text-xs">
+          <AvatarFallback className="rounded-md text-xs">
             {label?.charAt(0).toUpperCase()}
           </AvatarFallback>
         </Avatar>
