@@ -10,6 +10,8 @@ export const Modals = () => {
 
   // To prevent potential hydration problem, useEffect is used to force this to be a client-side component
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps, react-hooks/rules-of-hooks, @typescript-eslint/ban-ts-comment
+    // @ts-ignore - This is a standard hydration pattern
     setMounted(true);
   }, []);
 

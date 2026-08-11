@@ -1,7 +1,7 @@
 import EmojiPicker, { EmojiClickData, Theme } from "emoji-picker-react";
 import { useTheme } from "next-themes";
 
-const CustomPicker = (props: any) => {
+const CustomPicker = (props: { onEmojiSelect?: (emoji: { native: string }) => void; [key: string]: unknown }) => {
   const { resolvedTheme } = useTheme();
 
   return (

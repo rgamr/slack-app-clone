@@ -56,7 +56,7 @@ export const CreateWorkspaceModal = () => {
             placeholder="Workspace name e.g. 'Work', 'Personal', 'Home'"
           />
           <div className="flex justify-end">
-            <Button disabled={isPending}>Create</Button>
+            <Button type="submit" disabled={isPending}>Create</Button>
           </div>
         </form>
       </DialogContent>

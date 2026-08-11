@@ -33,7 +33,7 @@ export const EmojiPopover = ({
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
-  const handleSelect = (emoji: any) => {
+  const handleSelect = (emoji: { native: string }) => {
     onEmojiSelect(emoji.native);
     setPopoverOpen(false);
     setTimeout(() => {
