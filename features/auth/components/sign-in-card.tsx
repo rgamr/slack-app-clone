@@ -124,10 +124,20 @@ const SignInCard = ({ setState }: SignInCardProps) => {
                   window.location.href = "/";
                 })
                 .catch(() => {
-                  setError("Demo account not found. Please sign up first with demo@slackclone.com / demo1234");
-                })
-                .finally(() => {
-                  setPending(false);
+                  // Fall back to signing up if the demo account hasn't been created yet
+                  signIn("password", {
+                    name: "Demo User",
+                    email: "demo@slackclone.com",
+                    password: "demo1234",
+                    flow: "signUp",
+                  })
+                    .then(() => {
+                      window.location.href = "/";
+                    })
+                    .catch(() => {
+                      setError("Failed to initialize demo account.");
+                      setPending(false);
+                    });
                 });
             }}
             className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white border-0"
