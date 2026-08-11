@@ -70,7 +70,7 @@ export const CreateChannelModal = () => {
             maxLength={80}
           />
           <div className="flex justify-end">
-            <Button disabled={isPending}>Create</Button>
+            <Button disabled={isPending} type="submit">Create</Button>
           </div>
         </form>
       </DialogContent>

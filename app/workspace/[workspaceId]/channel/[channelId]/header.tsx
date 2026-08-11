@@ -139,16 +139,16 @@ export const Header = ({ title }: HeaderProps) => {
                       maxLength={80}
                       placeholder="e.g. plan-budget"
                     />
+                    <DialogFooter className="mt-4">
+                      <DialogClose render={<Button
+                          variant="outline"
+                          disabled={updateChannel.isPending}
+                        />}>
+                          Cancel
+                      </DialogClose>
+                      <Button disabled={updateChannel.isPending} type="submit">Save</Button>
+                    </DialogFooter>
                   </form>
-                  <DialogFooter>
-                    <DialogClose render={<Button
-                        variant="outline"
-                        disabled={updateChannel.isPending}
-                      />}>
-                        Cancel
-                    </DialogClose>
-                    <Button disabled={updateChannel.isPending}>Save</Button>
-                  </DialogFooter>
                 </DialogContent>
               </Dialog>
               {currentMember.data?.role === "admin" && (
