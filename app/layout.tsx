@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Slack Clone",
-  description: "A real-time Slack clone built with Next.js, Convex, and Tailwind CSS.",
+  title: "Slack App",
+  description: "A real-time Slack app built with Next.js, Convex, and Tailwind CSS.",
 };
 
 export default function RootLayout({

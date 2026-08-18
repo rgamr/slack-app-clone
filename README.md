@@ -1,4 +1,4 @@
-# Slack Clone
+# Slack App
 
 A real-time chat application inspired by Slack, built with modern web technologies. *(Note: This project was built by following along with a tutorial by Code with Antonio.)*
 
