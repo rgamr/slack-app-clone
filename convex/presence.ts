@@ -37,7 +37,7 @@ export const heartbeat = mutation({
 export const getOnlineMembers = query({
   args: { workspaceId: v.id("workspaces") },
   handler: async (ctx, args) => {
-    const threshold = Date.now() - 120000; // 2 minutes
+    const threshold = Date.now() - 15000; // 15 seconds
 
     const presence = await ctx.db
       .query("presence")

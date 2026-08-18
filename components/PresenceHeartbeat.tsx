@@ -15,10 +15,10 @@ export const PresenceHeartbeat = ({ workspaceId }: PresenceHeartbeatProps) => {
     // Initial heartbeat
     mutate({ workspaceId });
 
-    // Subsequent heartbeats every 60 seconds
+    // Subsequent heartbeats every 5 seconds
     const interval = setInterval(() => {
       mutate({ workspaceId });
-    }, 60000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [workspaceId, mutate]);
