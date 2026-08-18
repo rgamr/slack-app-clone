@@ -1,6 +1,6 @@
 # Slack Clone
 
-A real-time chat application inspired by Slack, built with modern web technologies. 
+A real-time chat application inspired by Slack, built with modern web technologies. *(Note: This project was built by following along with a tutorial by Code with Antonio.)*
 
 ## 🚀 Live Demo
 [https://slack-app-clone-eight.vercel.app]
@@ -43,4 +43,4 @@ Then, run the development server:
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000] with your browser to see the result.
