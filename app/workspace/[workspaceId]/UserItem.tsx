@@ -27,9 +27,10 @@ interface UserItemProps {
   label?: string;
   image?: string;
   variant?: VariantProps<typeof userItemVariants>["variant"];
+  isOnline?: boolean;
 }
 
-export const UserItem = ({ id, image, label, variant }: UserItemProps) => {
+export const UserItem = ({ id, image, label, variant, isOnline }: UserItemProps) => {
   const workspaceId = useWorkspaceId();
 
   return (
@@ -39,12 +40,17 @@ export const UserItem = ({ id, image, label, variant }: UserItemProps) => {
       size="sm"
     >
       <Link href={`/workspace/${workspaceId}/member/${id}`} className="flex items-center w-full">
-        <Avatar className="size-5 rounded-md mr-1">
-          <AvatarImage className="rounded-md" src={image} />
-          <AvatarFallback className="rounded-md text-xs">
-            {label?.charAt(0).toUpperCase()}
-          </AvatarFallback>
-        </Avatar>
+        <div className="relative mr-1">
+          <Avatar className="size-5 rounded-md">
+            <AvatarImage className="rounded-md" src={image} />
+            <AvatarFallback className="rounded-md text-xs">
+              {label?.charAt(0).toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
+          {isOnline && (
+            <div className="absolute -bottom-0.5 -right-0.5 size-2.5 bg-[#1164A3] border-2 border-white rounded-full" style={{ backgroundColor: "#2BAC76" }} />
+          )}
+        </div>
         <span className="text-sm truncate">{label}</span>
       </Link>
     </Button>

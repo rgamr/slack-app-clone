@@ -46,6 +46,13 @@ const schema = defineSchema({
       "parentMessageId",
       "conversationId",
     ]),
+  presence: defineTable({
+    memberId: v.id("members"),
+    workspaceId: v.id("workspaces"),
+    updatedAt: v.number(),
+  })
+    .index("by_workspace_id", ["workspaceId"])
+    .index("by_member_id", ["memberId"]),
   reactions: defineTable({
     workspaceId: v.id("workspaces"),
     messageId: v.id("messages"),

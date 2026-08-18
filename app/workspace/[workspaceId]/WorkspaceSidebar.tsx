@@ -15,6 +15,8 @@ import { useGetWorkspace } from "@/features/workspaces/api/useGetWorkspace";
 import { useChannelId } from "@/hooks/useChannelId";
 import { useMemberId } from "@/hooks/useMemberId";
 import { useWorkspaceId } from "@/hooks/useWorkSpaceId";
+import { PresenceHeartbeat } from "@/components/PresenceHeartbeat";
+import { useGetOnlineMembers } from "@/features/presence/api/useGetOnlineMembers";
 import { SidebarItem } from "./SidebarItem";
 import { UserItem } from "./UserItem";
 import { WorkspaceHeader } from "./WorkspaceHeader";
@@ -33,6 +35,7 @@ export const WorkspaceSidebar = () => {
   });
   const getChannels = useGetChannels({ workspaceId });
   const getMembers = useGetMembers({ workspaceId });
+  const onlineMembers = useGetOnlineMembers({ workspaceId });
 
   const { setOpen } = useCreateChannelModal();
 
@@ -55,6 +58,7 @@ export const WorkspaceSidebar = () => {
 
   return (
     <div className="flex flex-col gap-y-2 bg-[#5E2C5F] h-full">
+      <PresenceHeartbeat workspaceId={workspaceId} />
       <WorkspaceHeader
         workspace={getWorkspace.data}
         isAdmin={currentMember.data.role === "admin"}
@@ -101,6 +105,7 @@ export const WorkspaceSidebar = () => {
             key={item._id}
             label={item.user.name}
             variant={memberId === item._id ? "active" : "default"}
+            isOnline={onlineMembers.data?.includes(item._id)}
           />
         ))}
       </WorkspaceSection>
